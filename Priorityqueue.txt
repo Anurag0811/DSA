@@ -1,0 +1,31 @@
+Using self made priority queue --
+
+This is how u define it - 
+
+    priority_queue<pair<int,int>, vector<pair<int,int>>, cmp> pq;    
+
+we have pair here, you can change the datatype in the above statement accordingly. cmp is the comparator function 
+
+    struct cmp 
+    {
+            bool operator()(pair<int,int>& t1, pair<int,int>& t2) 
+            {
+                if( ( t1.second - t1.first) != ( t2.second - t2.first)) 
+                return (( t1.second - t1.first) < ( t2.second - t2.first)); // we want the larger difference to be on top
+            return t1.first  > t2.first; // we want the smaller of the firsts of 2 pair to be on top
+            }
+    };
+
+
+// To print the priority queue - 
+
+void showpq(priority_queue<pair<int,int>, vector<pair<int,int>>, cmp> gq) 
+{ 
+    priority_queue<pair<int,int>, vector<pair<int,int>>, cmp> g = gq; 
+    while (!g.empty()) 
+    { 
+        pii p = g.top();
+    g.pop();
+    cout << p.F << " " << p.S << endl; 
+    } 
+} 
